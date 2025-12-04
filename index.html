@@ -17,11 +17,11 @@
         }
 
         :root {
-            --bg-color: #ffffff;           
-            --primary-pink: #D65D96;       
+            --bg-color: #ffffff;            
+            --primary-pink: #D65D96;        
             --soft-pink: #F7B8D1;
             --gold-accent: #C5A059;          
-            --text-color: #333333;         
+            --text-color: #333333;          
             --card-shadow: 0 10px 30px rgba(214, 93, 150, 0.15);
         }
 
@@ -31,6 +31,7 @@
             font-family: 'Rubik', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
+            line-height: 1.6;
         }
 
         /* --- אנימציית עלים --- */
@@ -57,56 +58,6 @@
             0% { transform: translate(0, -10vh) rotate(0deg); opacity: 0; }
             100% { transform: translate(100px, 110vh) rotate(360deg); opacity: 0; }
         }
-
-        /* --- פרח דקורטיבי (מעודכן) --- */
-        .logo-flower {
-            /* שינוי מיקום: יחסי במקום אבסולוטי */
-            position: relative;
-            width: 250px; /* קצת הקטנתי שייראה אלגנטי מתחת לטקסט */
-            height: 250px;
-            margin-top: 20px; /* מרווח מהטקסט מעליו */
-            margin-bottom: 20px; /* מרווח מהטקסט מתחתיו */
-            opacity: 0.6; /* הגדלתי שקיפות שיראו אותו יותר */
-            /* הוספת האנימציה */
-            animation: flower-rotate 25s linear infinite;
-        }
-
-        /* הגדרת אנימציית הסיבוב */
-        @keyframes flower-rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .flower-core {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 50px;
-            height: 50px;
-            background-color: var(--soft-pink);
-            border-radius: 50%;
-            z-index: 2;
-        }
-
-        .petal {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 70px;
-            height: 100px;
-            background-color: var(--primary-pink);
-            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-            transform-origin: bottom center;
-        }
-
-        .p1 { transform: translate(-50%, -90%) rotate(0deg); }
-        .p2 { transform: translate(-50%, -90%) rotate(60deg); }
-        .p3 { transform: translate(-50%, -90%) rotate(120deg); }
-        .p4 { transform: translate(-50%, -90%) rotate(180deg); }
-        .p5 { transform: translate(-50%, -90%) rotate(240deg); }
-        .p6 { transform: translate(-50%, -90%) rotate(300deg); }
-
 
         /* --- מוביילים מהתקרה --- */
         .ceiling-mobiles {
@@ -154,7 +105,7 @@
             100% { transform: rotate(1.5deg); }
         }
 
-        /* --- שאר העיצוב --- */
+        /* --- רקע דקורטיבי --- */
         .swirl-wrapper {
             position: fixed;
             top: 0;
@@ -180,8 +131,9 @@
             100% { border-radius: 50% 60% 30% 70% / 60% 30% 70% 40%; }
         }
 
+        /* --- Header --- */
         header {
-            min-height: 100dvh; 
+            min-height: 90vh;
             width: 100%;
             display: flex;
             flex-direction: column;
@@ -195,7 +147,7 @@
 
         .logo-container {
             width: 100%;
-            max-width: 600px; 
+            max-width: 800px; 
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -218,55 +170,109 @@
             font-weight: 400;
             letter-spacing: 0.15em;
             text-transform: uppercase;
-        }
-        
-        .hebrew-desc {
-            font-size: clamp(1.1rem, 3.5vw, 1.5rem);
-            margin-top: 25px; 
-            opacity: 0.8;
-            font-weight: 300;
+            margin-bottom: 20px;
         }
 
+        /* מקום ללוגו (תמונה) */
+        .logo-placeholder {
+            width: 180px;
+            height: auto;
+            margin: 10px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .flower-logo-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            /* אם תרצי שהלוגו יסתובב, מחקי את ההערה מהשורה למטה */
+            /* animation: flower-rotate 25s linear infinite; */
+        }
+
+        @keyframes flower-rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hebrew-desc {
+            font-size: clamp(1.1rem, 3.5vw, 1.5rem);
+            margin-top: 15px; 
+            opacity: 0.9;
+            font-weight: 300;
+            color: var(--text-color);
+        }
+
+        /* --- Sections --- */
         section {
             position: relative;
             z-index: 10;
             width: 100%;
-            padding: 60px 20px;
+            padding: 80px 20px;
         }
 
+        /* --- Story Section --- */
         .story-section {
-            max-width: 800px;
+            max-width: 1100px;
             margin: 0 auto;
-            text-align: center;
+        }
+
+        .story-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+            text-align: right;
         }
 
         .story-profile-img {
-            width: 650px; 
+            width: 400px; 
             height: 400px; 
             border-radius: 30px;
             object-fit: cover;
-            margin: 0 auto 40px auto;
             border: 5px solid var(--soft-pink);
             box-shadow: 0 15px 30px rgba(214, 93, 150, 0.25);
             display: block;
-            transition: transform 0.3s ease;
+            flex-shrink: 0;
         }
 
-        .story-profile-img:hover {
-            transform: scale(1.02);
+        .story-content {
+            flex: 1;
+        }
+
+        .story-title {
+            color: var(--primary-pink);
+            font-size: 2rem;
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .story-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--gold-accent);
+            margin-top: 10px;
+            border-radius: 2px;
         }
 
         .story-text {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: #555;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #444;
             margin-bottom: 30px;
+            white-space: pre-line;
         }
 
+        /* --- Gallery --- */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -280,23 +286,25 @@
             transition: transform 0.3s ease;
         }
 
-        .card:hover { transform: translateY(-5px); }
+        .card:hover { transform: translateY(-8px); }
 
         .card-img {
             width: 100%;
-            height: 300px;
+            height: 320px;
             object-fit: contain;
             background-color: #ffffff;
             display: block;
             cursor: pointer;
             transition: transform 0.3s ease;
+            padding: 10px;
         }
 
-        .card-img:hover { transform: scale(1.03); }
+        .card-img:hover { transform: scale(1.02); }
         
+        /* כפתור יצירת הקשר - מעודכן */
         .cta-button {
             display: inline-block;
-            padding: 12px 35px;
+            padding: 12px 40px;
             background-color: var(--primary-pink);
             color: white;
             text-decoration: none;
@@ -304,6 +312,7 @@
             font-weight: 500;
             box-shadow: 0 4px 15px rgba(214, 93, 150, 0.3);
             transition: all 0.3s ease;
+            margin-top: 10px;
         }
 
         .cta-button:hover {
@@ -311,16 +320,18 @@
             transform: translateY(-2px);
         }
 
+        /* --- Footer --- */
         footer {
             text-align: center;
-            padding: 30px 20px;
+            padding: 40px 20px;
             background: var(--soft-pink);
             color: white;
             font-weight: 500;
         }
 
-        footer a { color: white; text-decoration: none; margin: 0 5px; }
+        footer a { color: white; text-decoration: none; margin: 0 8px; font-weight: bold; }
 
+        /* --- Lightbox --- */
         .lightbox {
             display: none;
             position: fixed;
@@ -330,7 +341,7 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background-color: rgba(0, 0, 0, 0.85);
+            background-color: rgba(0, 0, 0, 0.9);
             justify-content: center;
             align-items: center;
             opacity: 0;
@@ -342,9 +353,9 @@
         .lightbox-content {
             max-width: 90%;
             max-height: 90%;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-            transform: scale(0.8);
+            border-radius: 5px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            transform: scale(0.9);
             transition: transform 0.3s ease;
         }
 
@@ -352,37 +363,47 @@
 
         .close-lightbox {
             position: absolute;
-            top: 20px; right: 30px;
-            color: #fff; font-size: 40px; font-weight: bold;
+            top: 30px; right: 40px;
+            color: #fff; font-size: 50px; font-weight: 300;
             cursor: pointer; z-index: 10001;
+            transition: color 0.3s;
         }
+        
+        .close-lightbox:hover { color: var(--primary-pink); }
 
         /* --- התאמות למובייל --- */
+        @media screen and (max-width: 900px) {
+             .story-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
+            
+            .story-title::after { margin: 10px auto 0 auto; }
+
+            .story-profile-img {
+                width: 250px; height: 250px;
+                border-radius: 50%;
+                margin: 0 auto;
+            }
+        }
+
         @media screen and (max-width: 768px) {
             .swirl-decoration { opacity: 0.05; }
             .gallery-grid { grid-template-columns: 1fr; padding: 0; }
-            section { padding: 40px 20px; }
+            section { padding: 50px 20px; }
             
-            .story-profile-img {
-                width: 150px; height: 150px;
-                border-radius: 20px; border-width: 3px;
-            }
             .card-img { height: 350px; } 
 
-            /* מוביילים במובייל */
             .m3 { display: none; }
             .m5 { display: none; }
             .m1 { height: 10vh; }
             .m2 { height: 15vh; }
             .m4 { height: 35vh; right: 10%; }
-
-            /* הקטנת הפרח הדקורטיבי במובייל */
-            .logo-flower {
-                width: 180px;
-                height: 180px;
-            }
-            .flower-core { width: 35px; height: 35px; }
-            .petal { width: 45px; height: 70px; }
+            
+            .main-title { font-size: 4.5rem; }
+            /* התאמת גודל הלוגו במובייל */
+            .logo-placeholder { width: 140px; }
         }
     </style>
 </head>
@@ -413,14 +434,8 @@
             <h1 class="main-title">Lia's</h1>
             <h2 class="subtitle">creations</h2>
             
-            <div class="logo-flower">
-                <div class="petal p1"></div>
-                <div class="petal p2"></div>
-                <div class="petal p3"></div>
-                <div class="petal p4"></div>
-                <div class="petal p5"></div>
-                <div class="petal p6"></div>
-                <div class="flower-core"></div>
+            <div class="logo-placeholder">
+                <img src="flower-logo.png" alt="לוגו פרח" class="flower-logo-img">
             </div>
 
             <p class="hebrew-desc" data-aos="fade-up" data-aos-delay="300">
@@ -430,18 +445,25 @@
     </header>
 
     <section class="story-section" data-aos="fade-up">
-        <h2 style="color: var(--primary-pink); font-size: 1.8rem; margin-bottom: 25px;">הסיפור שלי</h2>
-        
-        <img src="2.png" alt="ליה כדורי" class="story-profile-img">
+        <div class="story-container">
+            <img src="2.png" alt="ליה כדורי" class="story-profile-img">
+            
+            <div class="story-content">
+                <h2 class="story-title">הסיפור שלי</h2>
+                <div class="story-text">
+נעים להכיר, אני ליה.
+אני בת 18, על הרצף, לומדת בבית ספר לחינוך מיוחד. לפני כמה חודשים גיליתי עולם חדש שנפתח בשבילי – עולם התכשיטנות ויצירת המוביילים מחרוזים.
 
-        <div class="story-text">
-            <p>
-                הכל מתחיל בפרטים הקטנים. בסטודיו שלי, בין הצבעים והצורות, אני יוצרת פריטים שנועדו לשמח.
-                <br>
-                <strong>Lia's Creations</strong> הוא המקום שבו החומר פוגש את הרוח. כל מובייל הוא ריקוד עדין, וכל תכשיט הוא נגיעה של יופי.
-            </p>
+כשאני יוצרת, אני מצליחה להביע את מה שמילים לפעמים לא מצליחות. אני אוהבת צבעים, דימויים ודמויות קסומות, במיוחד פיות ועולמות דמיוניים. כל מובייל שאני מכינה נולד מתוך דמיון כזה – משהו קטן שמזכיר לי קסם.
+
+אני מוזיקלית, אוהבת לשיר, ויש לי הרבה תחביבים שעוזרים לי להתחבר לעולם שסביבי.
+היצירה בידיים היא המקום שבו אני מרגישה הכי בנוח: היא עוזרת לי להתרכז, להירגע ולהיכנס לעולם הפרטי והטוב שלי – ושם אני הכי אני.
+
+אשמח לשתף אתכם ביופי ובשמחה שיש ביצירות שלי.
+                </div>
+                <a href="tel:0544276341" class="cta-button">צרו קשר</a>
+            </div>
         </div>
-        <a href="#contact" class="cta-button">צרו קשר</a>
     </section>
 
     <section>
@@ -471,8 +493,8 @@
 
     <footer id="contact">
         <p>Lia's Creations | Handmade with Love</p>
-        <div style="margin-top: 10px; font-size: 0.9rem;">
-            <a href="#">Instagram</a> • <a href="#">WhatsApp</a>
+        <div style="margin-top: 15px; font-size: 1rem;">
+            <a href="#">Instagram</a> • <a href="#">WhatsApp</a> • <a href="#">Facebook</a>
         </div>
     </footer>
 
