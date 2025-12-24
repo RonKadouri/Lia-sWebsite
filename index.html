@@ -187,7 +187,6 @@
             width: 100%;
             height: auto;
             display: block;
-            /* אם תרצי שהלוגו יסתובב, מחקי את ההערה מהשורה למטה */
             /* animation: flower-rotate 25s linear infinite; */
         }
 
@@ -301,7 +300,7 @@
 
         .card-img:hover { transform: scale(1.02); }
         
-        /* כפתור יצירת הקשר - מעודכן */
+        /* כפתור יצירת הקשר */
         .cta-button {
             display: inline-block;
             padding: 12px 40px;
@@ -313,11 +312,68 @@
             box-shadow: 0 4px 15px rgba(214, 93, 150, 0.3);
             transition: all 0.3s ease;
             margin-top: 10px;
+            border: none;
+            font-family: inherit;
+            font-size: 1rem;
+            cursor: pointer;
         }
 
         .cta-button:hover {
             background-color: #c05085;
             transform: translateY(-2px);
+        }
+
+        /* --- Contact Form Styles --- */
+        .contact-section {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .contact-form-wrapper {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(214, 93, 150, 0.2);
+            text-align: right;
+            margin-top: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--primary-pink);
+            font-weight: 500;
+        }
+
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid var(--soft-pink);
+            border-radius: 15px;
+            font-family: 'Rubik', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .form-group input:focus, 
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-pink);
+            box-shadow: 0 0 10px rgba(214, 93, 150, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
         }
 
         /* --- Footer --- */
@@ -327,6 +383,8 @@
             background: var(--soft-pink);
             color: white;
             font-weight: 500;
+            position: relative;
+            z-index: 20;
         }
 
         footer a { color: white; text-decoration: none; margin: 0 8px; font-weight: bold; }
@@ -380,6 +438,7 @@
             }
             
             .story-title::after { margin: 10px auto 0 auto; }
+            .form-group { text-align: right; } /* שומר על כיוון הטופס מימין לשמאל */
 
             .story-profile-img {
                 width: 250px; height: 250px;
@@ -402,8 +461,9 @@
             .m4 { height: 35vh; right: 10%; }
             
             .main-title { font-size: 4.5rem; }
-            /* התאמת גודל הלוגו במובייל */
             .logo-placeholder { width: 140px; }
+            
+            .contact-form-wrapper { padding: 25px; }
         }
     </style>
 </head>
@@ -461,7 +521,7 @@
 
 אשמח לשתף אתכם ביופי ובשמחה שיש ביצירות שלי.
                 </div>
-                <a href="tel:0544276341" class="cta-button">צרו קשר</a>
+                <a href="#contact-form-section" class="cta-button">צרו קשר</a>
             </div>
         </div>
     </section>
@@ -472,13 +532,32 @@
                 <img src="5.jpeg" alt="מובייל " class="card-img" onclick="openLightbox(this)">
                 <div style="padding: 15px; text-align: center;">
                     <h3 style="color: var(--text-color); font-size: 1.2rem;">
-                        מובילים עדינים עשויים חרוזים וקריסטלים	שאני יוצרת.
+                        מובילים עדינים עשויים חרוזים וקריסטלים שאני יוצרת.
 מעוצבים ליצירת משחק אור מרהיב, מושלמים להוספת נגיעה של יופי טבעי ואנרגיה חיובית לכל חלל.
                     </h3>
                 </div>
             </div>
-            
-           
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact-form-section" data-aos="fade-up">
+        <h2 class="story-title">כתבו לי</h2>
+        <p style="margin-bottom: 20px;">יש לכם שאלה? רוצים להזמין מובייל בהתאמה אישית? אשמח לשמוע מכם!</p>
+        
+        <div class="contact-form-wrapper">
+            <form action="https://formspree.io/f/mzdpqbnq" method="POST">
+                <div class="form-group">
+                    <label for="email">כתובת המייל שלכם:</label>
+                    <input type="email" name="email" id="email" placeholder="לדוגמה: name@example.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">ההודעה:</label>
+                    <textarea name="message" id="message" placeholder="כאן אפשר לכתוב לי כל מה שתרצו..." required></textarea>
+                </div>
+                
+                <button type="submit" class="cta-button" style="width: 100%; border-radius: 15px;">שליחת הודעה</button>
+            </form>
         </div>
     </section>
 
